@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useMockData, Internship, Company } from "@/context/MockDataContext";
 import { Badge } from "@/components/ui/Badge";
-import { Search, X, MapPin, Briefcase, Calendar, ChevronRight, CornerDownRight } from "lucide-react";
+import { Search, X, MapPin, Briefcase, Calendar, ChevronRight, CornerDownRight, FileText } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
