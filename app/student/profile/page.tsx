@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useMockData } from "@/context/MockDataContext";
 import { Badge } from "@/components/ui/Badge";
-import { Camera, Mail, Phone, MapPin, Linkedin, Github, Globe, UploadCloud, FileText, Trash2, Edit2 } from "lucide-react";
+import { Camera, Mail, Phone, MapPin, Link as LinkIcon, Code, Globe, UploadCloud, FileText, Trash2, Edit2 } from "lucide-react";
 import { useDropzone } from "react-dropzone";
 import { toast } from "sonner";
 
@@ -102,11 +102,11 @@ export default function StudentProfile() {
                   <h3 className="font-medium text-base mb-6">Online Presence</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                      <div className="flex items-center gap-3 p-3 rounded-lg border border-[#E5E5E5] hover:border-[#111] cursor-pointer transition-colors">
-                        <Linkedin size={20} className="text-[#0077B5]" />
+                        <LinkIcon size={20} className="text-[#0077B5]" />
                         <span className="text-sm font-medium">LinkedIn</span>
                      </div>
                      <div className="flex items-center gap-3 p-3 rounded-lg border border-[#E5E5E5] hover:border-[#111] cursor-pointer transition-colors">
-                        <Github size={20} />
+                        <Code size={20} />
                         <span className="text-sm font-medium">GitHub</span>
                      </div>
                      <div className="flex items-center gap-3 p-3 rounded-lg border border-[#E5E5E5] hover:border-[#111] cursor-pointer transition-colors">
