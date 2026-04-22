@@ -4,8 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Eye, EyeOff } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function SignInPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -29,7 +31,7 @@ export default function SignInPage() {
     await new Promise((r) => setTimeout(r, 1200)); // mock API delay
     setLoading(false);
     // In production: call auth API, redirect to dashboard
-    alert("Sign in successful (mock). Redirecting to dashboard…");
+    router.push('/student/dashboard');
   };
 
   return (

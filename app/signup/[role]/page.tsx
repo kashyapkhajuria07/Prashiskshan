@@ -328,7 +328,7 @@ export default function SignupPage() {
 
   const handleSuccess = () => {
     setSucceeded(true);
-    setTimeout(() => router.push(`/verify/${role}`), 2000);
+    setTimeout(() => router.push(`/${role}/dashboard`), 2000);
   };
 
   return (
@@ -378,7 +378,7 @@ export default function SignupPage() {
 
           {succeeded && (
             <p className="font-sans text-[13px] text-[#999999] text-center mt-4">
-              Redirecting to verification…
+              Redirecting to dashboard…
             </p>
           )}
         </div>
