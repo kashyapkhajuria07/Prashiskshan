@@ -31,7 +31,11 @@ export default function SignInPage() {
     await new Promise((r) => setTimeout(r, 1200)); // mock API delay
     setLoading(false);
     // In production: call auth API, redirect to dashboard
-    router.push('/student/dashboard');
+    if (email.includes('college') || email.includes('.edu')) {
+      router.push('/college/dashboard');
+    } else {
+      router.push('/student/dashboard');
+    }
   };
 
   return (
