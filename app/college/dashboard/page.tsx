@@ -4,7 +4,7 @@ import { useCollegeData } from "@/context/CollegeDataContext";
 import { 
   Users, Briefcase, Award, TrendingUp, AlertTriangle, 
   Sparkles, FileText, Calendar, Plus, Upload, CheckCircle2,
-  Clock, CheckSquare, Bell, UserPlus
+  Clock, CheckSquare, Bell, UserPlus, BookOpen
 } from "lucide-react";
 import { useState } from "react";
 import { 
