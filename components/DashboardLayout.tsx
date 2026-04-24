@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 import { useMockData } from "@/context/MockDataContext";
 import { 
   Home, Search, FileText, BookOpen, Users, Edit3, User,
-  Briefcase, CheckSquare, BarChart, Settings, Mail, Bell, Menu
+  Briefcase, CheckSquare, BarChart, Settings, Mail, Bell, Menu,
+  PlusSquare, UserCheck, ClipboardList, Building, TrendingUp, Database, Layout, UsersRound, CheckCircle2
 } from "lucide-react";
 import { useState } from "react";
 
@@ -38,13 +39,18 @@ const FACULTY_NAV: NavItem[] = [
 ];
 
 const INDUSTRY_NAV: NavItem[] = [
-  { label: "Dashboard", href: "/industry/dashboard", icon: Home },
-  { label: "Post Internship", href: "/industry/post", icon: Edit3 },
-  { label: "Applications", href: "/industry/applications", icon: FileText },
-  { label: "Active Interns", href: "/industry/interns", icon: Users },
-  { label: "Evaluations", href: "/industry/evaluations", icon: CheckSquare },
-  { label: "Company Profile", href: "/industry/profile", icon: Briefcase },
-  { label: "Analytics", href: "/industry/analytics", icon: BarChart },
+  { label: "Overview", href: "/industry/dashboard", icon: Home },
+  { label: "Post Internship", href: "/industry/post", icon: PlusSquare },
+  { label: "Manage Openings", href: "/industry/openings", icon: Briefcase },
+  { label: "Talent Pipeline", href: "/industry/pipeline", icon: Users },
+  { label: "Active Interns", href: "/industry/interns", icon: UserCheck },
+  { label: "Evaluations", href: "/industry/evaluations", icon: ClipboardList },
+  { label: "College Network", href: "/industry/network", icon: Building },
+  { label: "Analytics", href: "/industry/analytics", icon: TrendingUp },
+  { label: "Talent Pool", href: "/industry/pool", icon: Database },
+  { label: "Brand Page", href: "/industry/brand", icon: Layout },
+  { label: "Team", href: "/industry/team", icon: UsersRound },
+  { label: "Settings", href: "/industry/settings", icon: Settings },
 ];
 
 export function DashboardLayout({ children, role }: { children: ReactNode, role: 'student' | 'faculty' | 'industry' }) {
@@ -59,6 +65,8 @@ export function DashboardLayout({ children, role }: { children: ReactNode, role:
   // Find user data
   let userName = "User";
   let userInitials = "U";
+  let isVerified = false;
+  let industryRole = "Account Owner"; // For industry
   if (role === 'student') {
     const student = students.find(s => s.id === currentUserId);
     if(student) {
@@ -70,6 +78,7 @@ export function DashboardLayout({ children, role }: { children: ReactNode, role:
     if(company) {
       userName = company.name;
       userInitials = company.name.substring(0, 2).toUpperCase();
+      isVerified = company.verified;
     }
   }
 
@@ -88,8 +97,27 @@ export function DashboardLayout({ children, role }: { children: ReactNode, role:
         fixed md:relative top-0 left-0 h-full w-64 bg-white border-r border-[#E5E5E5] flex flex-col z-30 transition-transform duration-300
         ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0
       `}>
-        <div className="p-6 pb-2 flex items-center justify-between md:block">
-          <Link href="/" className="font-instrument text-3xl tracking-tight block">Prashikshan</Link>
+        <div className="p-6 pb-2 flex items-start justify-between md:block">
+          <Link href="/" className="font-instrument text-3xl tracking-tight block mb-4">Prashikshan</Link>
+          
+          {role === 'industry' && (
+            <div className="mb-4 hidden md:block">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 bg-[#E5E5E5] rounded-full flex items-center justify-center font-inter font-medium text-[#111]">
+                  {userInitials}
+                </div>
+                <div>
+                  <div className="font-instrument text-[16px] text-[#111111] leading-tight">{userName}</div>
+                </div>
+              </div>
+              {isVerified && (
+                <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#ECFDF5] text-[#059669] rounded-full font-mono text-[11px] mb-2 border border-[#A7F3D0]">
+                  Verified Partner <CheckCircle2 size={10} />
+                </div>
+              )}
+            </div>
+          )}
+          
           <button className="md:hidden p-1" onClick={() => setMobileMenuOpen(false)}>✕</button>
         </div>
         
@@ -117,12 +145,23 @@ export function DashboardLayout({ children, role }: { children: ReactNode, role:
         {/* Profile Dropdown Area */}
         <div className="p-4 border-t border-[#E5E5E5]">
           <div className="flex items-center gap-3 w-full p-2 rounded-lg hover:bg-[#F3F4F6] cursor-pointer transition-colors">
-            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#E5E5E5] flex items-center justify-center font-inter font-medium text-[#111111]">
-              {userInitials}
-            </div>
+            {role !== 'industry' && (
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#E5E5E5] flex items-center justify-center font-inter font-medium text-[#111111]">
+                {userInitials}
+              </div>
+            )}
             <div className="flex-1 overflow-hidden">
-              <div className="text-sm font-medium text-[#111111] truncate">{userName}</div>
-              <div className="text-xs text-[#666666] capitalize truncate">{role}</div>
+              <div className="text-sm font-medium text-[#111111] truncate">
+                {role === 'industry' ? "User Name" : userName}
+              </div>
+              <div className="text-xs text-[#666666] truncate">
+                {role === 'industry' ? "Account Owner" : userName}
+              </div>
+              {role === 'industry' && (
+                <div className="mt-1 font-mono text-[11px] px-1.5 py-0.5 bg-[#F0FDF4] text-[#166534] border border-[#BBF7D0] inline-block rounded">
+                  {industryRole}
+                </div>
+              )}
             </div>
           </div>
         </div>
