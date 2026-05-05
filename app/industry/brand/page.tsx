@@ -4,7 +4,7 @@ import { useState } from "react";
 import { RichTextEditor } from "@/components/RichTextEditor";
 import { 
   Layout, Eye, Pencil, CheckCircle2, Upload, GripVertical, 
-  Trash2, Plus, Globe, Building, Award, Check
+  Trash2, Plus, Globe, Building, Award, Check, Users
 } from "lucide-react";
 import { toast } from "sonner";
 
