@@ -14,6 +14,9 @@ export interface Student {
   skills: { name: string; level: number }[];
   avatar?: string;
   internshipStatus: 'searching' | 'active' | 'completed';
+  careerType?: string;
+  targetCareer?: string;
+  targetCareerProgress?: number;
 }
 
 export interface Company {
@@ -71,6 +74,7 @@ interface MockDataState {
   addApplication: (app: Application) => void;
   updateApplicationStatus: (id: string, status: Application['status']) => void;
   addInternship: (internship: Internship) => void;
+  updateStudent: (id: string, data: Partial<Student>) => void;
 }
 
 // Initial Mock Data
@@ -81,7 +85,8 @@ const MOCK_STUDENTS: Student[] = [
   },
   {
     id: 's2', name: 'Priya Sharma', email: 'priya@example.com', course: 'B.Des', college: 'NID',
-    readinessScore: 92, profileCompletion: 100, skills: [{ name: 'UI/UX', level: 3 }], internshipStatus: 'active'
+    readinessScore: 92, profileCompletion: 100, skills: [{ name: 'UI/UX', level: 3 }], internshipStatus: 'active',
+    careerType: 'The Creative Builder', targetCareer: 'UX Designer', targetCareerProgress: 34
   }
 ];
 
@@ -116,6 +121,7 @@ const MockDataContext = createContext<MockDataState | undefined>(undefined);
 export function MockDataProvider({ children }: { children: ReactNode }) {
   const [currentUserRole, setCurrentUserRole] = useState<UserRole>('student');
   const [currentUserId, setCurrentUserId] = useState<string>('s1');
+  const [students, setStudents] = useState<Student[]>(MOCK_STUDENTS);
   const [applications, setApplications] = useState<Application[]>(MOCK_APPLICATIONS);
   const [internships, setInternships] = useState<Internship[]>(MOCK_INTERNSHIPS);
   
@@ -131,18 +137,23 @@ export function MockDataProvider({ children }: { children: ReactNode }) {
     setInternships(prev => [internship, ...prev]);
   };
 
+  const updateStudent = (id: string, data: Partial<Student>) => {
+    setStudents(prev => prev.map(s => s.id === id ? { ...s, ...data } : s));
+  };
+
   return (
     <MockDataContext.Provider value={{
       currentUserRole,
       currentUserId,
-      students: MOCK_STUDENTS,
+      students,
       companies: MOCK_COMPANIES,
       internships,
       applications,
       peerSessions: MOCK_PEER_SESSIONS,
       addApplication,
       updateApplicationStatus,
-      addInternship
+      addInternship,
+      updateStudent
     }}>
       {children}
     </MockDataContext.Provider>

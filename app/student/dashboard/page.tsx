@@ -4,7 +4,7 @@ import { useMockData } from "@/context/MockDataContext";
 import { Card, CardTitle } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import Link from "next/link";
-import { Briefcase, Activity, Calendar, FileText, ChevronRight, Video, Download } from "lucide-react";
+import { Briefcase, Activity, Calendar, FileText, ChevronRight, Video, Download, Compass, Target } from "lucide-react";
 
 export default function StudentDashboard() {
   const { currentUserId, students, internships, applications } = useMockData();
@@ -71,6 +71,96 @@ export default function StudentDashboard() {
             3 hours learned
           </div>
         </Card>
+      </div>
+
+      {/* Career Discovery & Path Entry Points */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {!student.careerType ? (
+          <Link href="/student/career-discovery" className="block group">
+            <Card className="h-full border-[#E5E5E5] hover:border-[#111111] transition-colors flex items-start gap-4 bg-white">
+              <div className="w-12 h-12 rounded-full bg-[#F7F6F3] flex items-center justify-center shrink-0 group-hover:bg-[#111111] group-hover:text-white transition-colors">
+                <Compass size={24} />
+              </div>
+              <div>
+                <h3 className="font-instrument text-xl mb-1 group-hover:underline">Not sure what career fits you?</h3>
+                <p className="text-sm text-[#666]">Discover your perfect career match with our AI assessment.</p>
+                <div className="mt-3 text-sm font-medium flex items-center text-[#111111]">
+                  Start Discovery <ChevronRight size={14} className="ml-1" />
+                </div>
+              </div>
+            </Card>
+          </Link>
+        ) : (
+          <Link href="/student/career-discovery" className="block group">
+            <Card className="h-full border-[#E5E5E5] hover:border-[#111111] transition-colors flex items-start gap-4 bg-[#F7F6F3]">
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shrink-0">
+                <Compass size={24} className="text-[#666]" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="font-instrument text-xl">Your Career Type</h3>
+                  <Badge variant="success">Match</Badge>
+                </div>
+                <p className="text-sm font-medium text-[#111111]">{student.careerType}</p>
+                <div className="mt-3 text-sm font-medium flex items-center text-[#666] group-hover:text-[#111111] transition-colors">
+                  View full results <ChevronRight size={14} className="ml-1" />
+                </div>
+              </div>
+            </Card>
+          </Link>
+        )}
+
+        {!student.targetCareer ? (
+          <Link href="/student/career-path" className="block group">
+            <Card className="h-full border-[#E5E5E5] hover:border-[#111111] transition-colors flex items-start gap-4 bg-white">
+              <div className="w-12 h-12 rounded-full bg-[#F7F6F3] flex items-center justify-center shrink-0 group-hover:bg-[#111111] group-hover:text-white transition-colors">
+                <Target size={24} />
+              </div>
+              <div>
+                <h3 className="font-instrument text-xl mb-1 group-hover:underline">Set a target career</h3>
+                <p className="text-sm text-[#666]">We'll guide you there with a personalized roadmap.</p>
+                <div className="mt-3 text-sm font-medium flex items-center text-[#111111]">
+                  Build Path <ChevronRight size={14} className="ml-1" />
+                </div>
+              </div>
+            </Card>
+          </Link>
+        ) : (
+          <Link href="/student/career-path" className="block group">
+            <Card className="h-full border-[#E5E5E5] hover:border-[#111111] transition-colors flex items-center gap-4 bg-white">
+              <div className="relative shrink-0 flex items-center justify-center w-16 h-16">
+                <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                  <path
+                    className="text-[#E5E5E5]"
+                    strokeWidth="3"
+                    stroke="currentColor"
+                    fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    className="text-[#111111] transition-all duration-1000 ease-out"
+                    strokeDasharray={`${student.targetCareerProgress || 0}, 100`}
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    stroke="currentColor"
+                    fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center font-jetbrains-mono text-[11px] font-medium">
+                  {student.targetCareerProgress || 0}%
+                </div>
+              </div>
+              <div className="flex-1">
+                <div className="text-xs text-[#666] mb-0.5 uppercase tracking-wide font-medium">Target Career</div>
+                <h3 className="font-instrument text-xl mb-1 leading-tight">{student.targetCareer}</h3>
+                <div className="mt-2 text-sm font-medium flex items-center text-[#111111] group-hover:underline">
+                  Continue Learning <ChevronRight size={14} className="ml-1" />
+                </div>
+              </div>
+            </Card>
+          </Link>
+        )}
       </div>
 
       {/* Three Column Layout equivalent (2/3 + 1/3) */}
