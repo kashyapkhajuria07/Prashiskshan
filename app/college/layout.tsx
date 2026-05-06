@@ -7,7 +7,7 @@ import { useCollegeData } from "@/context/CollegeDataContext";
 import { 
   Home, PieChart, Sparkles, BookOpen, Users,
   Briefcase, CheckCircle, BarChart, FileText, Settings,
-  Search, Mail, Bell, Menu, ChevronDown
+  Search, Mail, Bell, Menu, ChevronDown, UserCheck
 } from "lucide-react";
 
 interface NavItem {
@@ -20,6 +20,7 @@ const COLLEGE_NAV: NavItem[] = [
   { label: "Overview", href: "/college/dashboard", icon: Home },
   { label: "Student Insights", href: "/college/insights", icon: PieChart },
   { label: "AI Recommendations", href: "/college/ai-recommendations", icon: Sparkles },
+  { label: "Student Interns", href: "/college/student-interns", icon: UserCheck },
   { label: "Curriculum", href: "/college/curriculum", icon: BookOpen },
   { label: "Faculty", href: "/college/faculty", icon: Users },
   { label: "Industry Partnerships", href: "/college/industry", icon: Briefcase },
