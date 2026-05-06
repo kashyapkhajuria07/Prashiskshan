@@ -22,6 +22,18 @@ export default function ReportPreviewTab() {
     generateReport();
   };
 
+  const handleDownload = () => {
+    if (!intern) return;
+    // Mock download logic
+    const element = document.createElement("a");
+    const file = new Blob(["This is a simulated mock PDF for the internship report."], {type: 'application/pdf'});
+    element.href = URL.createObjectURL(file);
+    element.download = `${intern.studentName.replace(/\s+/g, '_')}_Internship_Report.pdf`;
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
+
   const sections = [
     { key: 'cover', label: 'Cover page with student details' },
     { key: 'executiveSummary', label: 'Executive summary (AI-generated)' },
@@ -63,7 +75,10 @@ export default function ReportPreviewTab() {
             </div>
             <div className="font-instrument text-[20px] text-[#111] mb-2">Report Ready</div>
             <div className="font-inter text-[13px] text-[#666] mb-6">Your comprehensive report has been generated successfully.</div>
-            <button className="w-full flex items-center justify-center gap-2 bg-[#111] text-white px-4 py-2.5 rounded-[8px] font-inter text-[13px] font-medium hover:bg-black transition-colors mb-3">
+            <button 
+              onClick={handleDownload}
+              className="w-full flex items-center justify-center gap-2 bg-[#111] text-white px-4 py-2.5 rounded-[8px] font-inter text-[13px] font-medium hover:bg-black transition-colors mb-3"
+            >
               <Download size={16} />
               Download PDF
             </button>
