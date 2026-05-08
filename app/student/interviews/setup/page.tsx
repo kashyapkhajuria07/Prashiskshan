@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { 
   Camera, Mic, Settings, CheckCircle2, ChevronLeft, Wifi, AlertCircle
 } from "lucide-react";
 
-export default function InterviewSetupPage() {
+function InterviewSetupContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const interviewType = searchParams.get('type') || 'technical';
@@ -269,5 +269,13 @@ export default function InterviewSetupPage() {
 
       </div>
     </div>
+  );
+}
+
+export default function InterviewSetupPage() {
+  return (
+    <Suspense fallback={<div className="max-w-3xl mx-auto pb-12 pt-12 flex justify-center"><span className="text-sm text-[#666]">Loading setup...</span></div>}>
+      <InterviewSetupContent />
+    </Suspense>
   );
 }
