@@ -1,6 +1,5 @@
 # Prashikshan - EdTech Platform MVP
 
-![Prashikshan Platform](https://img.shields.io/badge/Platform-EdTech-blue.svg)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black.svg)
 ![React](https://img.shields.io/badge/React-19-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue.svg)
