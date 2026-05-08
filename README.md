@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prashikshan - EdTech Platform MVP
 
-## Getting Started
+![Prashikshan Platform](https://img.shields.io/badge/Platform-EdTech-blue.svg)
+![Next.js](https://img.shields.io/badge/Next.js-16-black.svg)
+![React](https://img.shields.io/badge/React-19-blue.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue.svg)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38B2AC.svg)
+![Zustand](https://img.shields.io/badge/State-Zustand-orange.svg)
 
-First, run the development server:
+Prashikshan is a comprehensive, multi-role internship and career development platform connecting students, colleges, and industry partners. It provides a full suite of AI-powered features for career discovery, interview preparation, and internship reporting, adhering to a modern, minimalist, typography-focused design system.
 
+## 🌟 Key Features
+
+The platform is divided into three distinct, interconnected portals:
+
+### 🎓 Student Portal
+* **AI Career Discovery & Roadmaps**: Interactive career path builder and discovery tool utilizing React Flow visualizations to help students navigate their professional journey.
+* **AI Interview Simulator**: A state-of-the-art mock interview environment featuring:
+  * Role-based interview selection.
+  * Pre-interview system checks.
+  * Live split-screen interface with real-time text/voice capabilities.
+  * Multi-dimensional performance scoring and adaptive AI feedback.
+* **Internship Discovery & Tracking**: Explore and apply for internships seamlessly, with a clear application pipeline.
+* **Skill Hub & Peer Exchange**: Interactive environments for collaborative learning and skill advancement.
+
+### 🏛️ College Administration Dashboard
+* **Multi-Role Authentication & Onboarding**: Robust auth flow (Student, College, Industry) with OTP verification and document uploads.
+* **Student-Intern Monitoring**: Comprehensive tracking of active interns and their performance.
+* **AI Internship Reporting**: Mock AI engine for generating professional, NEP-compliant PDF internship reports.
+* **Analytics & Insights**: Deep analytics into student placement metrics and college performance.
+
+### 🏢 Industry Partner Dashboard
+* **12-Module Comprehensive Dashboard**: Managing the full lifecycle of an intern.
+* **Internship Posting & Pipeline Management**: Streamlined tools to post openings and track applicants through multiple stages.
+* **Active Interns & Evaluations**: Monitor current interns and submit structured performance evaluations.
+* **College Network**: Manage relationships with partner institutions.
+* **Analytics**: Detailed reporting on recruitment metrics.
+
+## 🛠️ Technology Stack
+
+Prashikshan is built with cutting-edge web technologies:
+
+* **Framework**: Next.js 16 (App Router)
+* **Library**: React 19
+* **Language**: TypeScript
+* **Styling**: Tailwind CSS 4 & Vanilla CSS for core UI tokens
+* **State Management**: Zustand
+* **Animations**: Framer Motion
+* **Forms & Validation**: React Hook Form + Zod
+* **Visualizations & Charts**: React Flow, Recharts, Chart.js
+* **Drag & Drop**: @dnd-kit
+* **Calendars**: FullCalendar
+* **Icons**: Lucide React
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Ensure you have Node.js (v20+) and npm/yarn/pnpm installed.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/kashyapkhajuria07/Prashiskshan.git
+   cd Prashiskshan
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 🎨 Design System
+
+The application strictly adheres to a minimalist, typography-focused design system. Key principles include:
+* **Rich Aesthetics**: Utilizing curated, harmonious color palettes, modern typography (Inter/Roboto/Outfit), and smooth gradients.
+* **Dynamic Interactions**: Incorporating subtle micro-animations (via Framer Motion) and responsive hover states for a premium feel.
+* **Clean Layouts**: Emphasizing whitespace, structural hierarchy, and avoiding generic design patterns to deliver a state-of-the-art user experience.
+
+## 📁 Project Structure
+
+* `/app` - Next.js App Router pages and layouts for Student, College, and Industry portals.
+* `/components` - Reusable UI components and layout structures.
+* `/lib/store` - Zustand state management stores (e.g., internsStore.ts).
+* `/public` - Static assets.
+
+## 📦 Deployment
+
+The project is configured for seamless deployment to **Vercel** or **Google Cloud Run**.
+
+To build for production locally:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🤝 Contributing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📄 License
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is proprietary and confidential. Unauthorized copying of this file, via any medium is strictly prohibited.
