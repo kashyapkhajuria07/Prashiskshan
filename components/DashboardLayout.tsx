@@ -7,7 +7,7 @@ import { useMockData } from "@/context/MockDataContext";
 import { 
   Home, Search, FileText, BookOpen, Users, Edit3, User,
   Briefcase, CheckSquare, BarChart, Settings, Mail, Bell, Menu,
-  PlusSquare, UserCheck, ClipboardList, Building, TrendingUp, Database, Layout, UsersRound, CheckCircle2, Compass, Target
+  PlusSquare, UserCheck, ClipboardList, Building, TrendingUp, Database, Layout, UsersRound, CheckCircle2, Compass, Target, Mic
 } from "lucide-react";
 import { useState } from "react";
 
@@ -24,6 +24,7 @@ const STUDENT_NAV: NavItem[] = [
   { label: "Discover Internships", href: "/student/discover", icon: Search },
   { label: "My Applications", href: "/student/applications", icon: FileText },
   { label: "Skill Hub", href: "/student/skills", icon: BookOpen },
+  { label: "Interview Practice", href: "/student/interviews", icon: Mic },
   { label: "Peer Exchange", href: "/student/peers", icon: Users },
   { label: "Logbook", href: "/student/logbook", icon: Edit3 },
   { label: "Profile", href: "/student/profile", icon: User },
