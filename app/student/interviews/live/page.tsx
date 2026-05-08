@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { 
   Mic, Keyboard, Send, Clock, X, Circle,
@@ -25,7 +25,7 @@ const MOCK_FLOW = [
   "Thanks for walking me through that. We're almost out of time. Do you have any questions for me about the role or the engineering team?"
 ];
 
-export default function LiveInterviewPage() {
+function LiveInterviewContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const type = searchParams.get('type') || 'Technical';
@@ -471,5 +471,13 @@ export default function LiveInterviewPage() {
       </div>
 
     </div>
+  );
+}
+
+export default function LiveInterviewPage() {
+  return (
+    <Suspense fallback={<div className="h-[calc(100vh-64px)] flex items-center justify-center bg-white"><span className="text-sm text-[#666]">Loading interview...</span></div>}>
+      <LiveInterviewContent />
+    </Suspense>
   );
 }
